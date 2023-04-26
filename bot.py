@@ -76,7 +76,7 @@ async def pause(ctx):
 
     
     else:
-        await ctx.send("⚠️Error: La música ya está en pausa ⏸️")
+        await ctx.send("⚠️Error: La música ya está en pausa. ⏸️")
         await asyncio.sleep(10)
         await ctx.message.delete()
     
