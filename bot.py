@@ -30,7 +30,7 @@ async def play(ctx, url):
         await ctx.send("Error: La música ya está en reproducción.")
         return
     
-    await ctx.send('🎶 Descargando canción... 🎶')
+    await ctx.send('🎶 Descargando canción... 🎶 🎶')
     process = subprocess.Popen("yt-dlp -f 'ba' -x --audio-format mp3 " +  url + " -o song.mp3 ", shell=True, stdout=subprocess.PIPE)
     process.wait() 
     await asyncio.sleep(1)
@@ -66,8 +66,12 @@ async def stop(ctx):
 async def pause(ctx):
     voice_client = ctx.message.guild.voice_client
     
+    
     if not voice_client.is_paused():
         voice_client.pause()
+        await ctx.send("La música se ha pausado ⏸️")
+
+    
         await ctx.send("La música se ha pausado ⏸️")
 
     
@@ -81,6 +85,9 @@ async def resume(ctx):
     voice_client = ctx.message.guild.voice_client
     if voice_client.is_paused():
         voice_client.resume()
+        await ctx.send("🔊 La música se ha vuelto a reproducir 🔊")
+        await asyncio.sleep(10)
+        await ctx.message.delete()
         await ctx.send("🔊 La música se ha vuelto a reproducir 🔊")
         await asyncio.sleep(10)
         await ctx.message.delete()
