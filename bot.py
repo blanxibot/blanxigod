@@ -69,7 +69,7 @@ async def pause(ctx):
     
     if not voice_client.is_paused():
         voice_client.pause()
-        await ctx.send("La música se ha pausado ⏸️")
+        await ctx.send("La música se ha pausado. ⏸️")
 
     
         await ctx.send("La música se ha pausado ⏸️")
