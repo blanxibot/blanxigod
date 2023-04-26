@@ -63,7 +63,7 @@ async def pause(ctx):
     if not voice_client.is_paused():
         voice_client.pause()
     else:
-        await ctx.send("Error: la música ya está en pausa.")
+        await ctx.send("Error: la música ya está en pausa..")
 
 @client.command()
 async def resume(ctx):
