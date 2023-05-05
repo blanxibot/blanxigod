@@ -6,7 +6,7 @@ import subprocess
 import discord
 from discord.ext import commands
 
-TOKEN = "MTA5NTM2MTUxNjAyNDM4MTQ2MA.GGu8pX.kRE-BoCym-HR4-hY1RZ8phnJAkvFQ_56i-yqQM"
+TOKEN = "MTA5NTM2MTUxNjAyNDM4MTQ2MA.GdxIAO.f4rCGxEf_dx6iq-f_PN_40Qwnqw3-a_I6KcNJs"
 
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
@@ -52,8 +52,10 @@ async def play_queue(ctx):
         # Elimina la canción de la cola
         queue.pop(0)
 
+        await voice_client.disconnect()
+
     # Sale del canal de voz al finalizar la cola
-    await voice_client.disconnect()
+    #await voice_client.disconnect()
 
 @client.command()
 async def play(ctx):
@@ -78,9 +80,7 @@ async def pause(ctx):
     if not voice_client.is_paused():
         voice_client.pause()
         await ctx.send("La música se ha pausado ⏸️")
-    else:
-        await ctx.send("⚠️ Error: La música ya está en pausa. ⏸️")
-
+        
 @client.command()
 async def resume(ctx):
     voice_client = ctx.message.guild.voice_client
@@ -98,5 +98,13 @@ async def next(ctx):
         queue.pop(0)
     else:
         await ctx.send('❌No hay más canciones en la cola❌')
+
+# Reproducir la próxima canción en la cola
+@client.command()
+async def showqueue(ctx):
+    index = 1
+    for song in queue:
+        await ctx.send("🔊 [" + str(index) + "/" + str(len(queue)) + "] " + song)
+        index += 1
 
 client.run(TOKEN)

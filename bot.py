@@ -9,7 +9,7 @@ from discord.ext import commands
 #from dotenv import load_dotenv
 
 #load_dotenv()
-TOKEN = "MTA5NTM2MTUxNjAyNDM4MTQ2MA.GGu8pX.kRE-BoCym-HR4-hY1RZ8phnJAkvFQ_56i-yqQM"
+TOKEN = "x"
 
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
