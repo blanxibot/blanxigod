@@ -9,7 +9,7 @@ from discord.ext import commands
 #from dotenv import load_dotenv
 
 #load_dotenv()
-TOKEN = "MTA5NTM2MTUxNjAyNDM4MTQ2MA.GuGt-V.NG9o__ohgS0NLcox81YtTvnGVjGPvxRTEy8hpc"
+TOKEN = "MTA5NTM2MTUxNjAyNDM4MTQ2MA.GGu8pX.kRE-BoCym-HR4-hY1RZ8phnJAkvFQ_56i-yqQM"
 
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
@@ -30,11 +30,11 @@ async def play(ctx, url):
         await ctx.send("Error: La música ya está en reproducción.")
         return
     
-    await ctx.send('🎶 Descargando canción... 🎶 🎶')
+    await ctx.send('🎶 Descargando canción... 🎶 🎶', delete_after=5)
     process = subprocess.Popen("yt-dlp -f 'ba' -x --audio-format mp3 " +  url + " -o song.mp3 ", shell=True, stdout=subprocess.PIPE)
     process.wait() 
     await asyncio.sleep(1)
-    await ctx.send('🕺 A bailar!!! 🕺')
+    await ctx.send('🕺 A bailar!!! 🕺'delete_after=5)
     
 
     # Descomentar para descargar canción
@@ -58,9 +58,7 @@ async def stop(ctx):
     voice_client = ctx.message.guild.voice_client
     await voice_client.disconnect()
     voice_client.disconnect()
-    await ctx.send('👋🏻 Blanxi dice adioos 👋🏻')
-    await asyncio.sleep(10)
-    await ctx.message.delete()
+    await ctx.send('👋🏻 Blanxi dice adioos 👋🏻', delete_after=5)
 
 @client.command()
 async def pause(ctx):
@@ -69,30 +67,15 @@ async def pause(ctx):
     
     if not voice_client.is_paused():
         voice_client.pause()
-        await ctx.send("La música se ha pausado.. ⏸️")
-
-    
-        await ctx.send("La música se ha pausado ⏸️")
-
-    
+        await ctx.send("La música se ha pausado ⏸️", delete_after=5)
     else:
-        await ctx.send("⚠️Error: La música ya está en pausa. ⏸️")
-        await asyncio.sleep(10)
-        await ctx.message.delete()
-    
+        await ctx.send("⚠️Error: La música ya está en pausa. ⏸️", delete_after=5)
 @client.command()
 async def resume(ctx):
     voice_client = ctx.message.guild.voice_client
     if voice_client.is_paused():
         voice_client.resume()
-        await ctx.send("🔊 La música se ha vuelto a reproducir 🔊")
-        await asyncio.sleep(10)
-        await ctx.message.delete()
-        await ctx.send("🔊 La música se ha vuelto a reproducir 🔊")
-        await asyncio.sleep(10)
-        await ctx.message.delete()
+        await ctx.send("🔊 La música se ha vuelto a reproducir 🔊", delete_after=5)
     else:
-        await ctx.send("⚠️Error: La música no está en pausa 🔊")
-        await asyncio.sleep(10)
-        await ctx.message.delete()
+        await ctx.send("⚠️Error: La música no está en pausa 🔊", delete_after=5)
 client.run(TOKEN)
