@@ -6,7 +6,7 @@ import subprocess
 import discord
 from discord.ext import commands
 
-TOKEN = "MTA5NTM2MTUxNjAyNDM4MTQ2MA.GmlwLJ.3Iri-sJBYRSWYiS1_lYhQyGEh0XqG88PXlEd-k"
+TOKEN = "x"
 
 client = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
