@@ -63,13 +63,12 @@ async def stop(ctx):
 @client.command()
 async def pause(ctx):
     voice_client = ctx.message.guild.voice_client
-    
-    
     if not voice_client.is_paused():
         voice_client.pause()
         await ctx.send("La música se ha pausado ⏸️", delete_after=5)
     else:
         await ctx.send("⚠️Error: La música ya está en pausa. ⏸️", delete_after=5)
+        
 @client.command()
 async def resume(ctx):
     voice_client = ctx.message.guild.voice_client
